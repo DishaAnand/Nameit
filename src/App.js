@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/Header/Header'
+import Searchbox from './components/Searchbox/Searchbox'
+import './App.css'
+import ResultContainer from './components/ResultsContainer/ResultContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const name=require('@rstacruz/startup-name-generator')
+
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state={
+      headerText:"Name!",
+      headerExpanded:true,
+      suggestedNames:[],
+    }
+  
+
+  }
+  
+  handleInputChange=(inputText)=>{
+    
+    this.setState({
+      headerExpanded:!(inputText.length>0) ,
+      suggestedNames:inputText?name(inputText):[]});
+     
+  };
+
+
+  render(){
+    return (
+      <div>
+        <Header headerExpanded={this.state.headerExpanded}
+        headTitle={this.state.headerText} />
+        <Searchbox onInputChange={this.handleInputChange} />
+        <ResultContainer suggestedNames={this.state.suggestedNames} />
+      </div>
+    )
+  }
 }
 
-export default App;
+
+export default App

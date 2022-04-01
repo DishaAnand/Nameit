@@ -1,0 +1,34 @@
+.head-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.head-image{
+    width:auto;
+    transition:max-width 1s,min-width 1s;
+}
+.head-image-expanded{
+    min-width:600px;
+    max-width: 550px;
+}
+
+.head-image-contracted{
+    max-width:180px;
+    min-width:px;
+}
+
+
+
+.head-text{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin:5px ;
+    transition: font-size 1s;
+}
+.head-text-expanded{
+    font-size:45px;
+}
+.head-text-contracted{
+    font-size:12px;
+}
